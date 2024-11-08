@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -5,7 +6,10 @@ import { CustomProvider } from './provider'
 import StyledComponentsRegistry from '@/libs/styled-components/registry'
 import { cookies } from 'next/headers'
 import { get } from 'lodash'
-import Header from '@/components/Header/Header'
+import dynamic from 'next/dynamic'
+const Header = dynamic(() => import('@/components/Header/Header'), {
+  loading: () => <p>Loading...</p>,
+})
 
 const inter = Inter({ subsets: ["latin"] });
 
