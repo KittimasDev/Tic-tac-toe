@@ -1,19 +1,15 @@
 "use client";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useEffect } from "react";
 import { get } from "lodash";
-import Cookies from "js-cookie";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export default function Component() {
   const { data: session } = useSession();
 
   useEffect(() => {
     if (session) {
-      const email = get(session, "user.email", "");
       const id = get(session, "user.id", "");
-
-      Cookies.set("email-user-login", id);
       localStorage.setItem("email-user-login", id);
     }
   }, [session]);

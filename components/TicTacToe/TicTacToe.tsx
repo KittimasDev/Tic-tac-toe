@@ -4,13 +4,15 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function TicTacToe() {
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const [isXTurn, setIsXTurn] = useState(true);
-  const [score, setScore] = useState(0);
-  const [winStreak, setWinStreak] = useState(0);
-  const [currentPlayer, setCurrentPlayer] = useState("Best");
+  // กำหนด type ของ state
+  const [board, setBoard] = useState<(string | null)[]>(Array(9).fill(null));
+  const [isXTurn, setIsXTurn] = useState<boolean>(true);
+  const [score, setScore] = useState<number>(0);
+  const [winStreak, setWinStreak] = useState<number>(0);
+  const [currentPlayer, setCurrentPlayer] = useState<string>("Best");
 
-  const checkWinner = (board) => {
+  // กำหนด type ของฟังก์ชัน
+  const checkWinner = (board: (string | null)[]): string | null => {
     const winningCombinations = [
       [0, 1, 2],
       [3, 4, 5],
@@ -29,11 +31,11 @@ export default function TicTacToe() {
     return null;
   };
 
-  const checkDraw = (board) => {
+  const checkDraw = (board: (string | null)[]): boolean => {
     return board.every((cell) => cell !== null);
   };
 
-  const handleClick = (index) => {
+  const handleClick = (index: number): void => {
     if (board[index] || checkWinner(board)) return;
 
     const newBoard = [...board];
@@ -65,7 +67,7 @@ export default function TicTacToe() {
     }
   };
 
-  const resetBoard = () => {
+  const resetBoard = (): void => {
     setBoard(Array(9).fill(null));
     setIsXTurn(true);
     setCurrentPlayer("Best");
@@ -92,7 +94,7 @@ export default function TicTacToe() {
 
 export const Wrapper = styled.div`
   text-align: center;
-  h2{
+  h2 {
     text-align: left;
     padding-top: 20px;
     padding-left: 20px;
@@ -107,7 +109,11 @@ export const BoardWrapper = styled.div`
   justify-content: center;
 `;
 
-export const Cell = styled.button`
+interface CellProps {
+  cell: string | null;
+}
+
+export const Cell = styled.button<CellProps>`
   width: 100px;
   height: 100px;
   font-size: 2rem;

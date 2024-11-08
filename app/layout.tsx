@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { CustomProvider } from './provider'
 import StyledComponentsRegistry from '@/libs/styled-components/registry'
-import { cookies } from 'next/headers'
-import { get } from 'lodash'
 import Header from '@/components/Header/Header'
 
 const inter = Inter({ subsets: ["latin"] });
