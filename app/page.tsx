@@ -15,7 +15,6 @@ export default function Home() {
 
   useEffect(() => {
     if (session) {
-      const email = get(session, "user.email", "");
       const id = get(session, "user.id", "");
       localStorage.setItem("email-user-login", id);
     }

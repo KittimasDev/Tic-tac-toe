@@ -4,8 +4,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { CustomProvider } from './provider'
 import StyledComponentsRegistry from '@/libs/styled-components/registry'
-import { cookies } from 'next/headers'
-import { get } from 'lodash'
 import dynamic from 'next/dynamic'
 const Header = dynamic(() => import('@/components/Header/Header'), {
   loading: () => <p>Loading...</p>,
