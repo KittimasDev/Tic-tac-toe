@@ -4,14 +4,13 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function TicTacToe() {
-  // กำหนด type ของ state
+ 
   const [board, setBoard] = useState<(string | null)[]>(Array(9).fill(null));
   const [isXTurn, setIsXTurn] = useState<boolean>(true);
   const [score, setScore] = useState<number>(0);
   const [winStreak, setWinStreak] = useState<number>(0);
   const [currentPlayer, setCurrentPlayer] = useState<string>("Best");
 
-  // กำหนด type ของฟังก์ชัน
   const checkWinner = (board: (string | null)[]): string | null => {
     const winningCombinations = [
       [0, 1, 2],
